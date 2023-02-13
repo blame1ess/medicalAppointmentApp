@@ -32,7 +32,7 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="mb-5 text-lg">
-                            {{ __("Enter your doctor's name or choose the field below:") }}
+                            {{ __("Enter your doctor's name or service. List of available services you can see below:") }}
                         </div>
 
                         <div class="inline-grid grid-cols-3 gap-4">

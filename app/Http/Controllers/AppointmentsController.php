@@ -11,6 +11,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Ramsey\Uuid\Guid\Fields;
 
 class AppointmentsController extends Controller
@@ -50,12 +52,16 @@ class AppointmentsController extends Controller
 //        $appointments_table -> attachIterator(new \ArrayIterator($doctors_names));
 //        $appointments_table -> attachIterator(new \ArrayIterator($services));
 
-        $appointments = Appointment::where('patient_id', Auth::user()->id);
-        $appointments_arr = $appointments->get()->toArray();
+        $appointments = Appointment::query()
+            ->where('patient_id', Auth::user()->id)
+            ->get()
+            ->toArray();
 
         $i = 0;
         $table_datas = [];
-        foreach ($appointments_arr as $appointment) {
+
+
+        foreach ($appointments as $appointment) {
             $table_datas[$i][] = $appointment['id'];
 
             $doctor_id = Doctors_data::where('id', $appointment['doctor_id'])->first();
@@ -81,28 +87,51 @@ class AppointmentsController extends Controller
 
     public function search(Request $request) {
 
-        $doctor_name = $request->search_name;
-        $names = User::where('name', 'like', '%' .$doctor_name. '%')->where('user_type', 'doctor')->get();
-        $doctors_ids_arr = $names->pluck('id')->toArray();
+        $search_keyword = $request->search_name;
+
+        $services_doctors = DB::table('users')
+            ->join('doctors_data', 'users.id', '=', 'doctors_data.user_id')
+            ->join('fields', 'fields.id', '=', 'doctors_data.id')
+            ->join('services', 'doctors_data.id', '=', 'services.field_id')
+            ->select('users.name', 'fields.field', 'doctors_data.education', 'doctors_data.work_address')
+            ->where('name', 'like', '%' .$search_keyword. '%')
+            ->orWhere('service', 'like', '%' .$search_keyword. '%')
+            ->distinct('name')
+            ->get()
+            ->toArray();
+
+        // dd($services_doctors);
+
+ /*       foreach ($services_doctors as $service_doctor) {
+            dd($service_doctor->name);
+        }*/
+
+        /*$names = User::query()->where('name', 'like', '%' .$search_keyword. '%')
+            ->where('user_type', 'doctor')
+            ->orWhere()
+            ->get();*/
+
+        // $doctors_ids_arr = $names->pluck('id')->toArray();
+
         // $doctors_datas = Doctors_data::where('user_id', $doctors_ids_arr)->get();
 
-        $doctors_names = $names->pluck('name')->toArray();
+        /*$doctors_names = $names->pluck('name')->toArray();
         $doctor_data_arr = [];
         $i = 0;
         foreach (array_combine($doctors_ids_arr, $doctors_names) as $one_doctor => $name) {
             $doc_data = Doctors_data::where('user_id', $one_doctor)->first();
 
-            $doctor_data_arr[$i][] = $doc_data->education;
-            $doctor_data_arr[$i][] = $doc_data->work_address;
-            $doctor_data_arr[$i][] = $name;
+            $doctor_data_arr[$i]['education'] = $doc_data->education;
+            $doctor_data_arr[$i]['work_address'] = $doc_data->work_address;
+            $doctor_data_arr[$i]['name'] = $name;
             $i++;
             // dd($doctor_data_arr);
             // array_push($doctor_data_arr, $name);
             //$doctors_datas[] = array_push($doctor_data_arr, $name);
-        }
+        }*/
 
         return view('appointments.search', [
-            'doctor_data_arr' => $doctor_data_arr,
+            'services_doctors' => $services_doctors,
         ]);
 
 
@@ -145,9 +174,17 @@ class AppointmentsController extends Controller
 
         $doctor = User::where('name', $request->doctor_name)->first();
         $doctor_data = Doctors_data::where('user_id', $doctor->id)->first();
-        $field = Doctors_data::where('user_id', $doctor->id)->first();
+        $field = Field::query()->where('id', $doctor_data->field_id)->first();
 
         $service = Service::where('service', $request->service)->first();
+
+        /*$validator = Validator::make($request->all(), [
+            'doctor_name' => ['required', 'string', 'max:10',Rule::exists((new Doctors_data())->getTable(), 'name')]
+        ]);*/
+
+        /*if($validator->fails()) {
+            return redirect()->back()->withErrors($validator->messages());
+        }*/
 
         Appointment::create([
             'patient_id' => Auth::user()->id,

@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -43,7 +44,10 @@
                         @csrf
                         <div class="mb-6">
                             <label class="mr-12">Doctor's Name:</label>
-                            <input type="text" name="doctor_name" style="border-radius: 10px; min-width: 500px" value="{{ $name }}" required>
+                            <input type="text"
+                                   name="doctor_name"
+                                   style="border-radius: 10px; min-width: 500px"
+                                   value="{{ $name }}" required>
                         </div>
                         <div class="mb-6">
                             <fieldset>
