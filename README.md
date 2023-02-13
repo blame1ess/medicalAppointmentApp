@@ -1,66 +1,97 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
+<h1 align="center">Medical Appointments Manager (MAM)</h1>
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <img src="/public/images/main-logo.png" width="100" height="100">
 </p>
+<br />
 
-## About Laravel
+>MAM is Laravel Web Application using [Laravel](https://laravel.com/docs/9.x/releases) and [Tailwind](https://tailwindcss.com) stack, which:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* Allowing patient to make an appointment with doctor
+* Allowing doctors to manage their appointments
+* Allowing admins to monitor and manage the web-site, appointments, doctors, and users
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<br />
+<br />
+<br />
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<img src="/public/screenshoots/01.png">
+<br />
+<img src="/public/screenshoots/02.png">
+<br />
+<img src="/public/screenshoots/02-01.png">
+<br />
+<img src="/public/screenshoots/02-02.png">
+<br />
+<img src="/public/screenshoots/02-03.png">
+<br />
+<img src="/public/screenshoots/03.png">
+<br />
 
-## Learning Laravel
+<h2>Requirements: </h2>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<br />
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| Package:      | Version: |
+| ----------- | ----------- |
+| [Node](https://nodejs.org/en/)      | V19.0.0+ |
+| [Npm](https://www.npmjs.com)      | V9.0.0+ |
+| [PHP](https://www.php.net)      | V8.2.0+ |
+| [Composer](https://getcomposer.org)      | V2.5.1+ |
+| [MySQL](https://www.mysql.com)      | V8.0.31+ |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation
 
-## Laravel Sponsors
+> **Warning**
+> Make sure to follow the requirements first.
+Here is how you can run the project locally:
+1. Clone this repo
+    ```sh
+    git clone https://github.com/blame1ess/medicalAppointmentApp.git
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. Go into the project root directory
+    ```sh
+    cd doctorAppointment
+    ```
 
-### Premium Partners
+1. Create database `apppointmentsmanager` (you can change database name)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+1. Go to `.env` file
+    - set database credentials (`DB_DATABASE=apppointmentsmanager`, `DB_USERNAME=root`, `DB_PASSWORD=`)
+   > Make sure to follow your database username and password
+1. Install PHP dependencies
+    ```sh
+    composer install
+    ```
 
-## Contributing
+1. install front-end dependencies
+    ```sh
+    npm install && npx mix
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Run migration
+    ```
+    php artisan migrate
+    ```
 
-## Code of Conduct
+1. Run server
+    ```sh
+    php artisan serve
+    ```
+1. OR Run server (using valet)
+    ```sh
+    valet park
+    ``` 
+    ```sh
+    valet link
+    ``` 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Run Tailwind
+    ```sh
+    npm run dev
+    ```  
 
-## Security Vulnerabilities
+1. Visit `localhost:8000` in your favorite browser.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   > Make sure to follow your Laravel local Development Environment.
