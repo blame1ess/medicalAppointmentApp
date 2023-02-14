@@ -38,6 +38,7 @@ Route::prefix('/appointments')->middleware(['auth', 'verified'])->group( functio
 Route::prefix('/personal_data')->middleware(['auth', 'verified'])->group( function () {
     Route::get('/', [\App\Http\Controllers\PersonalDataController::class, 'personal_data'])->name('personal_data');
     Route::post('/create', [\App\Http\Controllers\PersonalDataController::class, 'create'])->name('personal_data.create');
+    Route::delete('/{$id}', [\App\Http\Controllers\PersonalDataController::class, 'destroy'])->name('personal_data.destroy');
 });
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Patient_data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PersonalDataController extends Controller
 {
@@ -32,4 +33,21 @@ class PersonalDataController extends Controller
         return redirect(route('personal_data'));
 
     }
+
+    /*public function edit(Request $request, $id) {
+
+    }
+
+    public function update(Request $request) {
+
+    }*/
+
+    public function destroy($id) {
+
+        DB::delete('delete from patients_data where id = ?', [$id]);
+
+        return redirect(route('personal_data'));
+
+    }
+
 }

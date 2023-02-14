@@ -58,6 +58,16 @@
                         </div>
                     @endif
 
+                    <form
+                        action="{{ route('personal_data.destroy', $patient_data->id) }}"
+                        method="post"
+                    >
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">RESET</button>
+                    </form>
+
+
 
                 </div>
             </div>

@@ -32,7 +32,7 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="mb-5 text-lg">
-                            {{ __("Enter your doctor's name or service. List of available services you can see below:") }}
+                            {{ __("Enter your doctor's name or service. List of available fields you can see below:") }}
                         </div>
 
                         <div class="inline-grid grid-cols-3 gap-4">
@@ -52,8 +52,8 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
-                    <div class="table-header">
-                        <h2>Your appointments:</h2>
+                    <div class="table-header" style="display: flex">
+                        <h2 class="mr-5" style="font-size: 18px">Your appointments:</h2>
                     </div>
                     <table>
                         <tr>
@@ -62,6 +62,7 @@
                             <th>service</th>
                             <th>appointment time</th>
                             <th>status</th>
+
                         </tr>
 
                         @forelse($table_datas as $row)
