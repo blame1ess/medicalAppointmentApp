@@ -9,4 +9,8 @@ class Doctors_data extends Model
 {
     use HasFactory;
     protected $table = 'doctors_data';
+
+    public function user(){
+        return $this->hasOne(User::class, 'user_id', 'id');
+    }
 }

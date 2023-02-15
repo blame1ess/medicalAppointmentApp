@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Enter your Personal Data:') }}
+{{--            {{ __('Enter your Personal Data:') }}--}}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form
-                        action="{{ route('personal_data.create') }}"
+{{--                        action="{{ route('personal_data.create') }}"--}}
                         method="post"
                         enctype="multipart/form-data"
                     >
@@ -59,13 +59,15 @@
                     @endif
 
                     <form
-                        action="{{ route('personal_data.destroy', $patient_data->id) }}"
                         method="post"
+                        action="{{ route('personal_data.destroy', $patient_data->id) }}"
                     >
                         @csrf
-                        @method('DELETE')
-                        <button type="button" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">RESET</button>
+                        @method('delete')
+{{--                        <a href="{{ route('personal_data.destroy', $patient_data->id) }}" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">RESET</a>--}}
+                        <button type="submit" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">RESET</button>
                     </form>
+
 
 
 

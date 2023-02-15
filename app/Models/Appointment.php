@@ -15,12 +15,11 @@ class Appointment extends Model
 
 
     protected $fillable = [
-        'patient_id', 'doctor_id', 'field_id', 'service_id', 'time_date', 'status', 'created_at', 'updated_at'
+        'patient_id', 'doctor_id', 'service_id', 'time_date', 'status', 'created_at', 'updated_at'
     ];
-
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
+//    public function user() {
+//        return $this->hasOne(User::class, 'patient_id', 'id');
+//    }
 
     public function doctor() {
         return $this->belongsTo(Doctors_data::class, 'doctor_id', 'id');

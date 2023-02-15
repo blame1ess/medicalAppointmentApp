@@ -46,7 +46,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function appointments() {
-        return $this->hasMany(Appointment::class);
+    public function appointment() {
+        return $this->hasMany(Appointment::class, 'id', 'doctor_id');
+    }
+
+    public function doctor() {
+        return $this->hasMany(Doctors_data::class, 'id', 'user_id');
     }
 }

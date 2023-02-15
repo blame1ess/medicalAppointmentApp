@@ -55,23 +55,35 @@
                     <div class="table-header" style="display: flex">
                         <h2 class="mr-5" style="font-size: 18px">Your appointments:</h2>
                     </div>
-                    <table>
+                    <table class="p-5">
                         <tr>
                             <th>id</th>
                             <th>doctor</th>
                             <th>service</th>
                             <th>appointment time</th>
                             <th>status</th>
+                            <th>action</th>
 
                         </tr>
 
                         @forelse($table_datas as $row)
                             <tr>
-                                <td>{{ $row[0] }}</td>
+                                <td class="p-6 text-lg">{{ $row[0] }}</td>
                                 <td>{{ $row[1] }}</td>
                                 <td>{{ $row[2] }}</td>
                                 <td>{{ $row[3] }}</td>
                                 <td>{{ $row[4] }}</td>
+                                {{--<td>
+                                    <a href="{{ route('') }}" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">EDIT</a>
+                                    <form
+                                        action="{{ route('appointments.destroy') }}"
+                                        method="post"
+                                    >
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">DELETE</button>
+                                    </form>
+                                </td>--}}
                             </tr>
                         @empty
                             <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3 mb-5" role="alert">
