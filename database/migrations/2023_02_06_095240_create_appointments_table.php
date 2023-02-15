@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('status')->default('waiting');
             $table->foreign('patient_id')->references('id')->on('patients_data');
             $table->foreign('doctor_id')->references('id')->on('doctors_data');
-            $table->foreign('field_id')->references('id')->on('fields');
             $table->foreign('service_id')->references('id')->on('services');
             $table->timestamps();
         });
