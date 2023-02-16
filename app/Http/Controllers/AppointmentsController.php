@@ -83,7 +83,7 @@ class AppointmentsController extends Controller
 
         // filled personal data check:
 
-        $id_exist = Patient_data::query()->where('user_id', Auth::user()->id)->find(1);
+        $id_exist = Patient_data::query()->where('user_id', Auth::user()->id)->first();
 
 
         if($id_exist) {
@@ -124,6 +124,7 @@ class AppointmentsController extends Controller
         $doctor = User::where('name', $request->doctor_name)->first();
         $doctor_data = Doctors_data::where('user_id', $doctor->id)->first();
         $service = Service::where('service', $request->service)->first();
+        $patient_id = Patient_data::query()->where('user_id', Auth::user()->id)->first();
 
         /*$validator = Validator::make($request->all(), [
             'doctor_name' => ['required', 'string', 'max:10',Rule::exists((new Doctors_data())->getTable(), 'name')]
@@ -134,7 +135,7 @@ class AppointmentsController extends Controller
         }*/
 
         Appointment::create([
-            'patient_id' => Auth::user()->id,
+            'patient_id' => $patient_id->id,
             'doctor_id' => $doctor_data->id,
             'service_id' => $service->id,
             'time_date' => $request->date .' '. $request->time,
