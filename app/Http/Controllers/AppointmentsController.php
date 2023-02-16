@@ -32,14 +32,15 @@ class AppointmentsController extends Controller
             }
         }*/
 
+        $patient_id = Patient_data::query()->where('user_id', Auth::user()->id)->first();
+
         $appointments = Appointment::query()
-            ->where('patient_id', Auth::user()->id)
+            ->where('patient_id', $patient_id->id)
             ->get()
             ->toArray();
 
         $i = 0;
         $table_datas = [];
-
 
         foreach ($appointments as $appointment) {
             $table_datas[$i][] = $appointment['id'];
