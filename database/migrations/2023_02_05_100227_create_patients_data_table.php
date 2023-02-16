@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('blood_group');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('do_nothing');
             $table->timestamps();
         });
     }

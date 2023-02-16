@@ -10,11 +10,12 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form
-{{--                        action="{{ route('personal_data.create') }}"--}}
+                        action="{{ route('personal_data.create') }}"
                         method="post"
                         enctype="multipart/form-data"
                     >
                         @csrf
+                        @method('put')
                         <div class="mb-4">
                             <label class="mr-4">Phone Number:</label>
                             <input type="text" name="phone_number" style="border-radius: 10px; min-width: 500px" placeholder="+X - XXX - XXX - XX - XX">
@@ -56,20 +57,15 @@
                             <label class="text-blue-600">Address:</label> {{ $patient_data->address }}<br>
                             <label class="text-blue-600">Blood type:</label> {{ $patient_data->blood_type }}<br>
                         </div>
+                        <form
+                            method="post"
+                            action="{{ route('personal_data.destroy', $patient_data->id) }}"
+                        >
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">RESET</button>
+                        </form>
                     @endif
-
-                    <form
-                        method="post"
-                        action="{{ route('personal_data.destroy', $patient_data->id) }}"
-                    >
-                        @csrf
-                        @method('delete')
-{{--                        <a href="{{ route('personal_data.destroy', $patient_data->id) }}" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">RESET</a>--}}
-                        <button type="submit" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">RESET</button>
-                    </form>
-
-
-
 
                 </div>
             </div>

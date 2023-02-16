@@ -37,16 +37,13 @@ Route::prefix('/appointments')->middleware(['auth', 'verified'])->group( functio
     Route::get('/{$id}/destroy', [AppointmentsController::class, 'destroy'])->name('appointments.destroy');
 });
 
-Route::middleware(['auth', 'verified'])->prefix('personal_data')->group( function () {
+Route::prefix('personal_data')->middleware(['auth', 'verified'])->group( function () {
     Route::get('/', [\App\Http\Controllers\PersonalDataController::class, 'personal_data'])->name('personal_data');
-    Route::post('/create', [\App\Http\Controllers\PersonalDataController::class, 'create'])->name('personal_data.create');
-//    Route::delete('/{$id}/destroy', [\App\Http\Controllers\PersonalDataController::class, 'destroy'])->name('personal_data.destroy');
+    Route::put('/create', [\App\Http\Controllers\PersonalDataController::class, 'create'])->name('personal_data.create');
     Route::delete('/{id}/destroy', [\App\Http\Controllers\PersonalDataController::class, 'destroy'])->name('personal_data.destroy');
 });
 
-//
-//Route::middleware(['auth', 'verified'])->prefix('personal_data')->group( function () {
-//});
+
 
 
 

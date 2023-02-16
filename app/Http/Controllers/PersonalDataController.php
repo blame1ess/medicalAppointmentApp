@@ -11,7 +11,7 @@ class PersonalDataController extends Controller
     public function personal_data(Request $request) {
 
 
-        $patient_data = Patient_data::where('user_id', Auth::user()->id)->find(1);
+        $patient_data = Patient_data::where('user_id', Auth::user()->id)->first();
 
         return view('personal_data', [
             'patient_data' => $patient_data,
@@ -43,9 +43,7 @@ class PersonalDataController extends Controller
 
     public function destroy($id) {
 
-        dd($id);
-
-        Patient_data::destroy($id);
+        Patient_data::where('user_id', $id)->delete();
 
         return redirect()->route('personal_data');
 
