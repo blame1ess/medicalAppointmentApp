@@ -37,8 +37,8 @@
                             <div class="flex">
                                 <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
                                 <div>
-                                    <p class="font-bold">Your personal data filled successfully</p>
-                                    <p class="text-sm">If you want to make changes, reset your data first</p>
+                                    <p class="font-bold text-md">Your personal data filled successfully</p>
+                                    <p class="text-md">If you want to make changes, reset your data first</p>
                                 </div>
                             </div>
                         </div>
@@ -53,8 +53,8 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
-                        <p class="font-bold">Informational message</p>
-                        <p class="text-sm">
+                        <p class="font-bold text-lg">Read carefully!</p>
+                        <p class="text-md">
                             NOTE: If you are entering your data first time,
                             use field above and create your medicine card.
                             If you want to update already existing data, press RESET button.
@@ -64,8 +64,8 @@
                     <h2 class="mt-8 mb-5 text-lg">Your Personal Information:</h2>
                     @if($patient_data == null)
                         <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
-                            <p class="font-bold">Be Warned</p>
-                            <p>You did not fill your personal information yet.</p>
+                            <p class="font-bold text-lg">Be Warned</p>
+                            <p class="text-md">You did not fill your personal information yet.</p>
                         </div>
                     @else
                         <div class="text-lg">
