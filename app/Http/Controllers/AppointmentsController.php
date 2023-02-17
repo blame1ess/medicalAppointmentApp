@@ -152,7 +152,8 @@ class AppointmentsController extends Controller
     }
 
     public function destroy($id) {
-
+        Appointment::query()->where('id', $id)->delete();
+        return redirect( route('appointments'));
     }
 
 }

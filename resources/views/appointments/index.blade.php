@@ -73,17 +73,21 @@
                                 <td>{{ $row[2] }}</td>
                                 <td>{{ $row[3] }}</td>
                                 <td>{{ $row[4] }}</td>
-                                {{--<td>
-                                    <a href="{{ route('') }}" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">EDIT</a>
-                                    <form
-                                        action="{{ route('appointments.destroy') }}"
-                                        method="post"
-                                    >
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="bg-blue-700 hover:bg-red-600 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-8">DELETE</button>
-                                    </form>
-                                </td>--}}
+                                <td>
+                                    <div class="align-middle" style="display: flex; justify-content: center">
+                                        <a href="{{ route('appointments.edit', ['id' => $row[0]]) }}"
+                                           class="bg-yellow-600 hover:bg-white text-white hover:text-yellow-600 font-bold py-2 px-4 border border-yellow-600 rounded mt-8 mr-5 mb-7"
+                                        >EDIT</a>
+                                        <form
+                                            action="{{ route('appointments.destroy', ['id' => $row[0]]) }}"
+                                            method="post"
+                                        >
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-red-700 hover:bg-white text-white hover:text-red-700 font-bold py-2 px-4 border border-red-700 rounded mt-8">DELETE</button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                         @empty
                             <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3 mb-5" role="alert">
