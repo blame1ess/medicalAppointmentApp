@@ -33,37 +33,47 @@ class AppointmentsController extends Controller
         }*/
 
         $patient_id = Patient_data::query()->where('user_id', Auth::user()->id)->first();
-
-        $appointments = Appointment::query()
-            ->where('patient_id', $patient_id->id)
-            ->get()
-            ->toArray();
-
-        $i = 0;
         $table_datas = [];
 
-        foreach ($appointments as $appointment) {
-            $table_datas[$i][] = $appointment['id'];
+        if ($patient_id != null) {
+            $appointments = Appointment::query()
+                ->where('patient_id', $patient_id->id)
+                ->get()
+                ->toArray();
 
-            $doctor_id = Doctors_data::where('id', $appointment['doctor_id'])->first();
-            $doctor_name = User::where('id', $doctor_id->user_id)->first();
-            $table_datas[$i][] = $doctor_name->name;
+            $i = 0;
 
-            $service_name = Service::where('id', $appointment['service_id'])->first();
-            $table_datas[$i][] = $service_name->service;
+            foreach ($appointments as $appointment) {
+                $table_datas[$i][] = $appointment['id'];
 
-            $table_datas[$i][] = $appointment['time_date'];
-            $table_datas[$i][] = $appointment['status'];
+                $doctor_id = Doctors_data::where('id', $appointment['doctor_id'])->first();
+                $doctor_name = User::where('id', $doctor_id->user_id)->first();
+                $table_datas[$i][] = $doctor_name->name;
 
-            $i++;
+                $service_name = Service::where('id', $appointment['service_id'])->first();
+                $table_datas[$i][] = $service_name->service;
+
+                $table_datas[$i][] = $appointment['time_date'];
+                $table_datas[$i][] = $appointment['status'];
+
+                $i++;
+            }
+
+            return view('appointments.index', [
+                'fields' => Field::get(),
+                'table_datas' => $table_datas,
+                // 'doctors_names' => $doctors_names,
+                // 'services' => $services
+            ]);
+        } else {
+            return view('appointments.index', [
+                'fields' => Field::get(),
+                'table_datas' => $table_datas,
+                // 'doctors_names' => $doctors_names,
+                // 'services' => $services
+            ]);
         }
 
-        return view('appointments.index', [
-            'fields' => Field::get(),
-            'table_datas' => $table_datas,
-           // 'doctors_names' => $doctors_names,
-           // 'services' => $services
-        ]);
     }
 
     public function search(Request $request) {
@@ -147,6 +157,7 @@ class AppointmentsController extends Controller
 
     }
 
+    // recognized as useless, views and row is already ready to be implemented:
     public function edit($id) {
         return view('appointments.edit');
     }
@@ -154,6 +165,12 @@ class AppointmentsController extends Controller
     public function destroy($id) {
         Appointment::query()->where('id', $id)->delete();
         return redirect( route('appointments'));
+    }
+
+    // show method, to show available services on a web-site:
+
+    public function show() {
+
     }
 
 }

@@ -39,6 +39,7 @@
                             @foreach($fields as $field)
                                 <a href="#" class="text-lg text-blue-600 mr-4 hover:underline md:mr-6">{{ $field->field }}</a>
                             @endforeach
+
                         </div>
 
                     </div>
