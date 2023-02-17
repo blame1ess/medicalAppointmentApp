@@ -72,7 +72,7 @@
                             <label class="mr-11">Time:</label>
                             <input type="time" name="time" style="border-radius: 10px; min-width: 500px" required>
                         </div>
-                        <button type="submit" class="bg-green-600 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">MAKE AN APPOINTMENT</button>
+                        <button type="submit" class="bg-green-600 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-green-600 rounded">MAKE AN APPOINTMENT</button>
                     </form>
                 </div>
             </div>
