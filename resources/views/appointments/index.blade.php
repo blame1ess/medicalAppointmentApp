@@ -84,7 +84,9 @@
                                         >
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-red-700 hover:bg-white text-white hover:text-red-700 font-bold py-2 px-4 border border-red-700 rounded mt-8">DELETE</button>
+                                            <button type="submit" class="bg-red-700 hover:bg-white text-white hover:text-red-700 font-bold py-2 px-4 border border-red-700 rounded mt-8"
+                                                    onclick="return confirm('Are you sure you want to delete your appointment?')"
+                                            >DELETE</button>
                                         </form>
                                     </div>
                                 </td>
