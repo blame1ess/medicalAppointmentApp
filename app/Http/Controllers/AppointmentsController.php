@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchDoctorRequest;
 use App\Models\Appointment;
 use App\Models\Doctors_data;
 use App\Models\Field;
@@ -78,6 +79,10 @@ class AppointmentsController extends Controller
 
     public function search(Request $request) {
 
+        // validation for searching doctor or service
+        $validation = $request->validate([
+            'search_name' => 'required|string|max:50|alpha:ascii'
+        ]);
         // for search
         $search_keyword = $request->search_name;
 

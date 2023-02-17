@@ -13,14 +13,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="inline-flex flex-row">
-                        <form action="{{ route('appointments.search') }}" method="get" accept-charset="utf-8">
-                            <input type="text" class="border-black rounded-2xl" name="search_name" style="width: 600px" placeholder="Enter the doctor's name">
-                            <button type="submit" class="ml-8 inline-block bg-teal-400 rounded-2xl" style="padding: 10px 20px">Search</button>
-                        </form>
-
+                    <div>
+                        <div class="inline-flex flex-row">
+                            <form action="{{ route('appointments.search') }}" method="get" accept-charset="utf-8">
+                                <input type="text" class="border-black rounded-2xl" name="search_name" style="width: 600px" placeholder="Enter the doctor's name">
+                                <button type="submit" class="ml-8 inline-block bg-teal-400 rounded-2xl" style="padding: 10px 20px">Search</button>
+                            </form>
+                        </div>
+                        <div class="mt-5 alert alert-danger text-red-700 mb-1">
+                            @error('search_name')
+                                <span class="">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
