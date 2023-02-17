@@ -33,7 +33,7 @@ Route::prefix('/appointments')->middleware(['auth', 'verified'])->group( functio
     Route::get('/search', [AppointmentsController::class, 'search'])->name('appointments.search');
     Route::get('/create/{name}', [AppointmentsController::class, 'create'])->name('appointments.create');
     Route::post('/store', [AppointmentsController::class, 'store'])->name('appointments.store');
-    Route::get('/edit/{id}', [AppointmentsController::class, 'edit'])->name('appointments.edit');
+    //Route::get('/{id}/edit', [AppointmentsController::class, 'edit'])->name('appointments.edit');
     Route::delete('/{id}/destroy', [AppointmentsController::class, 'destroy'])->name('appointments.destroy');
 });
 

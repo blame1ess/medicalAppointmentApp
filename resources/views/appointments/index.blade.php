@@ -75,16 +75,16 @@
                                 <td>{{ $row[4] }}</td>
                                 <td>
                                     <div class="align-middle" style="display: flex; justify-content: center">
-                                        <a href="{{ route('appointments.edit', ['id' => $row[0]]) }}"
+                                        {{--<a href="{{ route('appointments.edit', ['id' => $row[0]]) }}"
                                            class="bg-yellow-600 hover:bg-white text-white hover:text-yellow-600 font-bold py-2 px-4 border border-yellow-600 rounded mt-8 mr-5 mb-7"
-                                        >EDIT</a>
+                                        >EDIT</a>--}}
                                         <form
                                             action="{{ route('appointments.destroy', ['id' => $row[0]]) }}"
                                             method="post"
                                         >
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-red-700 hover:bg-white text-white hover:text-red-700 font-bold py-2 px-4 border border-red-700 rounded mt-8"
+                                            <button type="submit" class="bg-red-700 hover:bg-white text-white hover:text-red-700 font-bold py-2 px-4 border border-red-700 rounded mt-8 mb-7"
                                                     onclick="return confirm('Are you sure you want to delete your appointment?')"
                                             >DELETE</button>
                                         </form>
