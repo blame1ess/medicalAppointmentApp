@@ -21,7 +21,7 @@
                     <x-nav-link :href="route('personal_data')" :active="request()->routeIs('personal_data')">
                         {{ __('Personal Data') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('personal_data')" :active="request()->routeIs('faq')">
+                    <x-nav-link :href="route('faq')" :active="request()->routeIs('faq')">
                         {{ __('FAQ') }}
                     </x-nav-link>
                 </div>
@@ -85,7 +85,7 @@
             <x-responsive-nav-link :href="route('personal_data')" :active="request()->routeIs('appointments')">
                 {{ __('Personal Data') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('personal_data')" :active="request()->routeIs('appointments')">
+            <x-responsive-nav-link :href="route('faq')" :active="request()->routeIs('appointments')">
                 {{ __('FAQ') }}
             </x-responsive-nav-link>
 

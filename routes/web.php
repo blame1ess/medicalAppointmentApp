@@ -43,6 +43,8 @@ Route::prefix('personal_data')->middleware(['auth', 'verified'])->group( functio
     Route::delete('/{id}/destroy', [\App\Http\Controllers\PersonalDataController::class, 'destroy'])->name('personal_data.destroy');
 });
 
+Route::middleware(['auth', 'verified'])->get('FAQ', [\App\Http\Controllers\FaqController::class, 'index'])->name('faq');
+
 
 
 
