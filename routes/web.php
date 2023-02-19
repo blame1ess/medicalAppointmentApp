@@ -43,7 +43,9 @@ Route::prefix('personal_data')->middleware(['auth', 'verified'])->group( functio
 
 Route::middleware(['auth', 'verified'])->get('FAQ', [\App\Http\Controllers\FaqController::class, 'index'])->name('faq');
 
-
+Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group( function () {
+    Route::get('/appointments', [\App\Http\Controllers\Admin\adminAppointmentsController::class, 'index'])->name('admin.appointments');
+});
 
 
 

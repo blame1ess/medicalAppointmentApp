@@ -15,9 +15,18 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('appointments')" :active="request()->routeIs('appointments')">
-                        {{ __('Make an Appointment') }}
-                    </x-nav-link>
+                    @if(\Illuminate\Support\Facades\Auth::user()->user_type == 'patient')
+
+                        <x-nav-link :href="route('appointments')" :active="request()->routeIs('appointments')">
+                            {{ __('Make an Appointment') }}
+                        </x-nav-link>
+
+                    @elseif(\Illuminate\Support\Facades\Auth::user()->user_type == 'admin')
+                        <x-nav-link :href="route('appointments')" :active="request()->routeIs('appointments')">
+                            {{ __('Manage Appointments') }}
+                        </x-nav-link>
+                    @endif
+
                     <x-nav-link :href="route('personal_data')" :active="request()->routeIs('personal_data')">
                         {{ __('Personal Data') }}
                     </x-nav-link>
