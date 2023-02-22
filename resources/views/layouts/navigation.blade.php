@@ -22,9 +22,11 @@
                         </x-nav-link>
 
                     @elseif(\Illuminate\Support\Facades\Auth::user()->user_type == 'admin')
-                        <x-nav-link :href="route('appointments')" :active="request()->routeIs('appointments')">
+
+                        <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
                             {{ __('Manage Appointments') }}
                         </x-nav-link>
+
                     @endif
 
                     <x-nav-link :href="route('personal_data')" :active="request()->routeIs('personal_data')">
