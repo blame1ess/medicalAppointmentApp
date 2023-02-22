@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
-use http\Message;
+use App\Models\Message;
+use App\Models\Patient_data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,6 +34,17 @@ class adminAppointmentsController extends Controller
         $appointment->status = 'approved';
         $appointment->save();
 
+        $user = Appointment::query()->findOrFail($id);
+        $user_id = Patient_data::query()->where('id', $user->patient_id)->first('user_id');
+
+        Message::query()->create([
+            'user_id' => $user_id->user_id,
+            'content' => 'The status of your appointment number #'. $id . ' has been changed to approved',
+        ]);
+
+        /*Message::query()->create([
+            'user_id' => $id
+        ]);*/
         return redirect(route('admin.appointments'));
 
     }
@@ -41,6 +53,14 @@ class adminAppointmentsController extends Controller
         $appointment = Appointment::query()->findOrFail($id);
         $appointment->status = 'declined';
         $appointment->save();
+
+        $user = Appointment::query()->findOrFail($id);
+        $user_id = Patient_data::query()->where('id', $user->patient_id)->first('user_id');
+
+        Message::query()->create([
+            'user_id' => $user_id->user_id,
+            'content' => 'The status of your appointment number #'. $id . ' has been changed to declined',
+        ]);
 
         return redirect(route('admin.appointments'));
     }
