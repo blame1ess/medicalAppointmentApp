@@ -25,4 +25,16 @@ class adminAppointmentsController extends Controller
             'table' => $table,
         ]);
     }
+
+    public function accept($id) {
+
+        $appointment = Appointment::query()->findOrFail($id);
+
+        $appointment->status = 'approved';
+
+        $appointment->save();
+
+        return redirect(route('admin.appointments'));
+
+    }
 }

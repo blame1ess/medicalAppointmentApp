@@ -45,6 +45,7 @@ Route::middleware(['auth', 'verified'])->get('FAQ', [\App\Http\Controllers\FaqCo
 
 Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group( function () {
     Route::get('/appointments', [\App\Http\Controllers\Admin\adminAppointmentsController::class, 'index'])->name('admin.appointments');
+    Route::get('/appointments/{id}/accepted', [\App\Http\Controllers\Admin\adminAppointmentsController::class, 'accept'])->name('admin.accept');
 });
 
 
