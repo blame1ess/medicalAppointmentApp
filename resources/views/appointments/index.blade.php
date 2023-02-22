@@ -117,7 +117,13 @@
                                 <td>{{ $row[1] }}</td>
                                 <td>{{ $row[2] }}</td>
                                 <td>{{ $row[3] }}</td>
-                                <td>{{ $row[4] }}</td>
+                                @if($row[4] == 'waiting')
+                                    <td class="text-blue-800">{{ $row[4] . '...' }}</td>
+                                @elseif($row[4] == 'approved')
+                                    <td class="text-green-700">{{ $row[4] }}</td>
+                                @else
+                                    <td class="text-red-700">{{ $row[4] }}</td>
+                                @endif
                                 <td>
                                     <div class="align-middle" style="display: flex; justify-content: center">
                                         {{--<a href="{{ route('appointments.edit', ['id' => $row[0]]) }}"

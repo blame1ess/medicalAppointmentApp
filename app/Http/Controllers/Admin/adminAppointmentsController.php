@@ -37,4 +37,12 @@ class adminAppointmentsController extends Controller
         return redirect(route('admin.appointments'));
 
     }
+
+    public function decline($id) {
+        $appointment = Appointment::query()->findOrFail($id);
+        $appointment->status = 'declined';
+        $appointment->save();
+
+        return redirect(route('admin.appointments'));
+    }
 }

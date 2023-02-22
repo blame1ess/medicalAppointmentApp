@@ -47,7 +47,13 @@
                                 <td>{{ $row->patient_name }}</td>
                                 <td>{{ $row->service }}</td>
                                 <td>{{ $row->time_date }}</td>
-                                <td>{{ $row->status }}</td>
+                                @if($row->status == 'waiting')
+                                    <td class="text-blue-800">{{ $row->status . '...' }}</td>
+                                @elseif($row->status == 'approved')
+                                    <td class="text-green-700">{{ $row->status }}</td>
+                                @else
+                                    <td class="text-red-700">{{ $row->status }}</td>
+                                @endif
 
                                 <td>
                                     @if($row->status == 'waiting')
@@ -55,8 +61,9 @@
                                             <a href="{{ route('admin.accept', ['id' => $row->id]) }}">Accept</a>
                                         </button>
                                         <button type="button" class="bg-red-700 hover:bg-white text-white hover:text-red-700 font-bold py-2 px-4 border border-red-700 rounded mt-8 mb-7">
-                                            Decline
+                                            <a href="{{ route('admin.decline', ['id' => $row->id]) }}">Decline</a>
                                         </button>
+
                                     @else
                                         {{--<button type="button" class="bg-red-700 hover:bg-white text-white hover:text-red-700 font-bold py-2 px-4 border border-red-700 rounded mt-8 mb-7">
                                             Nothing to do...
