@@ -35,7 +35,7 @@
                             {{ __('Manage Appointments') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('personal_data')" :active="request()->routeIs('personal_data')">
+                        <x-nav-link :href="route('manage_staff')" :active="request()->routeIs('manage_staff')">
                             {{ __('Manage staff') }}
                         </x-nav-link>
 
