@@ -58,7 +58,7 @@
                                 <td>
                                     @if($row->status == 'waiting')
                                         <button type="button" class="bg-green-700 hover:bg-white text-white hover:text-green-700 font-bold py-2 px-4 border border-green-700 rounded mt-8 mb-7">
-                                            <a href="{{ route('admin.accept', ['id' => $row->id]) }}">Accept</a>
+                                            <a href="{{ route('admin.accept', ['id' => $row->id]) }}">Approve</a>
                                         </button>
                                         <button type="button" class="bg-red-700 hover:bg-white text-white hover:text-red-700 font-bold py-2 px-4 border border-red-700 rounded mt-8 mb-7">
                                             <a href="{{ route('admin.decline', ['id' => $row->id]) }}">Decline</a>

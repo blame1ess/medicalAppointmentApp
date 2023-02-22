@@ -21,20 +21,29 @@
                             {{ __('Make an Appointment') }}
                         </x-nav-link>
 
+                        <x-nav-link :href="route('personal_data')" :active="request()->routeIs('personal_data')">
+                            {{ __('Personal Data') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('faq')" :active="request()->routeIs('faq')">
+                            {{ __('FAQ') }}
+                        </x-nav-link>
+
                     @elseif(\Illuminate\Support\Facades\Auth::user()->user_type == 'admin')
 
                         <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
                             {{ __('Manage Appointments') }}
                         </x-nav-link>
 
-                    @endif
+                        <x-nav-link :href="route('personal_data')" :active="request()->routeIs('personal_data')">
+                            {{ __('Manage staff') }}
+                        </x-nav-link>
 
-                    <x-nav-link :href="route('personal_data')" :active="request()->routeIs('personal_data')">
-                        {{ __('Personal Data') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('faq')" :active="request()->routeIs('faq')">
-                        {{ __('FAQ') }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('faq')" :active="request()->routeIs('faq')">
+                            {{ __('Patients data') }}
+                        </x-nav-link>
+
+                    @endif
                 </div>
             </div>
 
