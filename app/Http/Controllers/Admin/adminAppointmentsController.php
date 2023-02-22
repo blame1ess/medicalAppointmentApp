@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,9 +30,7 @@ class adminAppointmentsController extends Controller
     public function accept($id) {
 
         $appointment = Appointment::query()->findOrFail($id);
-
         $appointment->status = 'approved';
-
         $appointment->save();
 
         return redirect(route('admin.appointments'));
