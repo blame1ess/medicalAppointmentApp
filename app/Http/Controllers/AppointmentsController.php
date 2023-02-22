@@ -83,6 +83,9 @@ class AppointmentsController extends Controller
         $validation = $request->validate([
             'search_name' => 'required|string|max:50|alpha:ascii'
         ]);
+
+
+
         // for search
         $search_keyword = $request->search_name;
 

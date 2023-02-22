@@ -49,9 +49,17 @@
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <button class="bg-blue-700 hover:px-6 hover:py-1.5 text-white font-bold py-1 px-5 border border-blue-700 rounded">
-                                                        <a href="{{ route('dashboard.delete', ['id'=>$message['id']]) }}">OK</a>
-                                                    </button>
+                                                    <a class="bg-blue-700 hover:px-6 hover:py-1.5 text-white font-bold py-1 px-5 border border-blue-700 rounded" href="{{ route('dashboard.delete', ['id'=>$message['id']]) }}">
+                                                        @csrf
+                                                        OK
+                                                    </a>
+                                                    {{--<form action="{{ route('dashboard.delete', ['id'=>$message['id']]) }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                    </form>
+                                                    <button type="submit" class="bg-blue-700 hover:px-6 hover:py-1.5 text-white font-bold py-1 px-5 border border-blue-700 rounded">
+                                                        OK
+                                                    </button>--}}
                                                 </div>
                                             </div>
                                     </div>
@@ -68,9 +76,18 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <button class="bg-blue-700 hover:px-6 hover:py-1.5 text-white font-bold py-1 px-5 border border-blue-700 rounded">
-                                                    <a href="{{ route('dashboard.delete', ['id'=>$message['id']]) }}">OK</a>
-                                                </button>
+                                                <a class="bg-blue-700 hover:px-6 hover:py-1.5 text-white font-bold py-1 px-5 border border-blue-700 rounded" href="{{ route('dashboard.delete', ['id'=>$message['id']]) }}">
+                                                    @csrf
+                                                    OK
+                                                </a>
+
+                                                {{--<form action="{{ route('dashboard.delete', ['id'=>$message['id']]) }}" method="post">
+                                                    @method('delete')
+                                                    @csrf
+                                                </form>
+                                                <button type="submit" class="bg-blue-700 hover:px-6 hover:py-1.5 text-white font-bold py-1 px-5 border border-blue-700 rounded">
+                                                    OK
+                                                </button>--}}
                                             </div>
                                         </div>
                                     </div>

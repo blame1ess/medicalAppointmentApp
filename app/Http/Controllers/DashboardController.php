@@ -31,8 +31,7 @@ DashboardController extends Controller
     }
 
     public function delete($id) {
-
-        $message = Message::query()->where('id', $id)->delete();
+        Message::query()->where('id', $id)->delete();
 
         return(redirect('dashboard'));
     }
