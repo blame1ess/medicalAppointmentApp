@@ -50,6 +50,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group( functi
     Route::get('/appointments/{id}/declined', [\App\Http\Controllers\Admin\adminAppointmentsController::class, 'decline'])->name('admin.decline');
 
     Route::get('manage_staff', [\App\Http\Controllers\Admin\manageStaffController::class, 'index'])->name('manage_staff');
+    Route::get('search', [\App\Http\Controllers\Admin\manageStaffController::class, 'search'])->name('search');
 });
 
 
