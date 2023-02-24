@@ -45,7 +45,7 @@
 
                     @else
                         <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
-                            {{ __('Manage Appointments') }}
+                            {{ __('My Appointments') }}
                         </x-nav-link>
                         <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
                             {{ __('Manage Availability') }}

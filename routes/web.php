@@ -54,7 +54,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group( functi
     Route::post('store', [\App\Http\Controllers\Admin\manageStaffController::class, 'store'])->name('admin.store');
 });
 
-
+Route::prefix('doctor')->middleware('auth', 'verified')->group( function () {
+    Route::get('/personal_data');
+});
 
 
 
