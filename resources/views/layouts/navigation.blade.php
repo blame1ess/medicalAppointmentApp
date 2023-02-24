@@ -50,7 +50,7 @@
                         <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
                             {{ __('Manage Availability') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
+                        <x-nav-link :href="route('doctor.personal_data')" :active="request()->routeIs('doctor.personal_data')">
                             {{ __('Personal Data') }}
                         </x-nav-link>
                     @endif
