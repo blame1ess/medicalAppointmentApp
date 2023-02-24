@@ -43,6 +43,16 @@
                             {{ __('Patients data') }}
                         </x-nav-link>
 
+                    @else
+                        <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
+                            {{ __('Manage Appointments') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
+                            {{ __('Manage Availability') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.appointments')" :active="request()->routeIs('admin.appointments')">
+                            {{ __('Personal Data') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
