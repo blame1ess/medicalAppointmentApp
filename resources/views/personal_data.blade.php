@@ -30,7 +30,7 @@
                                 <input type="text" name="blood_type" style="border-radius: 10px; min-width: 500px" placeholder="A, B, AB, or O">
                             </div>
 
-                            <button type="submit" class="bg-green-600 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">ADD DATA</button>
+                            <button type="submit" class="bg-green-600 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-green-600 rounded">ADD DATA</button>
                         </form>
                     @else
                         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">

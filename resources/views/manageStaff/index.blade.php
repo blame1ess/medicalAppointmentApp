@@ -135,9 +135,9 @@
 
                 console.log('submit button clicked!')
 
-                var name = $('#name').val();
-                var email = $('#email').val();
-                var password = $('#password').val();
+                let name = $('#name').val()
+                let email = $('#email').val()
+                let password = $('#password').val()
 
                 $.ajax({
                     url: '{{ route('admin.store') }}',
@@ -145,7 +145,7 @@
                     data: {
                         name: name,
                         email: email,
-                        password: password
+                        password: password,
                     },
                     success: function(data) {
                         console.log(data);
