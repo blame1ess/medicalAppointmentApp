@@ -53,6 +53,9 @@
                         <x-nav-link :href="route('doctor.personal_data')" :active="request()->routeIs('doctor.personal_data')">
                             {{ __('Personal Data') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('doctor.manage_requests')" :active="request()->routeIs('doctor.manage_requests')">
+                            {{ __('Manage Requests') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
