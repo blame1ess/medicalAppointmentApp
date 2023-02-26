@@ -29,11 +29,24 @@
         </div>
     </div>
 
-    <div class="py-12">
+    <div class="py-12" style="margin-top: -5%">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h2 class="text-lg">You can ask administration of web-site to ask add new fields:</h2>
+                    <h2 class="text-lg mb-4">You can ask administration of web-site to add new fields:</h2>
+
+                    <form action="{{ route('manage_requests.field_request') }}" method="post">
+                        @csrf
+                        @method('put')
+
+                        <div class="mb-4">
+                            <label class="mr-12">Field Name:</label>
+                            <input type="text" name="field" style="border-radius: 10px; min-width: 300px" placeholder="Write in lower case letters">
+                            <button type="submit" class="bg-blue-600 text-white py-1 px-5 rounded-xl ml-5 hover:bg-red-700">SEND</button>
+                        </div>
+
+
+                    </form>
 
                 </div>
             </div>

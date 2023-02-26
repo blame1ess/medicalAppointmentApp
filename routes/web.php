@@ -58,7 +58,9 @@ Route::prefix('doctor')->middleware('auth', 'verified', 'doctor')->group( functi
     Route::get('/personal_data', [\App\Http\Controllers\Doctor\DoctorPersonalDataController::class, 'index'])->name('doctor.personal_data');
     Route::put('/personal_data/store', [\App\Http\Controllers\Doctor\DoctorPersonalDataController::class, 'store'])->name('doctor.personal_data.store');
     Route::post('personal_data/update', [\App\Http\Controllers\Doctor\DoctorPersonalDataController::class, 'update'])->name('doctor.personal_data.update');
+
     Route::get('manage_requests', [\App\Http\Controllers\Doctor\ManageRequestsController::class, 'index'])->name('doctor.manage_requests');
+    Route::put('manage_requests/field_request', [\App\Http\Controllers\Doctor\ManageRequestsController::class, 'create_field_request'])->name('manage_requests.field_request');
 });
 
 
