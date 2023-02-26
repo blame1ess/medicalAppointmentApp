@@ -13,5 +13,11 @@ class ManageRequestsController extends Controller
 
     public function create_field_request(Request $request) {
 
+        $validation = $request->validate([
+            'field' => 'string'
+        ]);
+
+
+
     }
 }
