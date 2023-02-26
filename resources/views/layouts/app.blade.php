@@ -28,6 +28,12 @@
                 </header>
             @endif
 
+            <div id="message">
+                @include('flash_message')
+
+                @yield('content')
+            </div>
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}

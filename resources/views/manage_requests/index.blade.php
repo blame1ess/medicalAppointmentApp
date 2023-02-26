@@ -40,11 +40,21 @@
                         @method('put')
 
                         <div class="mb-4">
-                            <label class="mr-12">Field Name:</label>
+                            <label class="mr-24">Field Name:</label>
                             <input type="text" name="field" style="border-radius: 10px; min-width: 300px" placeholder="Write in lower case letters">
-                            <button type="submit" class="bg-blue-600 text-white py-1 px-5 rounded-xl ml-5 hover:bg-red-700">SEND</button>
                         </div>
 
+                        @error('field')
+                            <div>
+                                <span>{{ $message }}</span>
+                            </div>
+                        @enderror
+
+                        <div class="mb-4">
+                            <label class="mr-9">Additional Message:</label>
+                            <input type="text" name="message" style="border-radius: 10px; min-width: 300px" placeholder="Any additional info (not required)">
+                            <button type="submit" class="bg-blue-600 text-white py-1 px-5 rounded-xl ml-5 hover:bg-red-700">SEND</button>
+                        </div>
 
                     </form>
 

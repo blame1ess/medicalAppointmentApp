@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Field_request extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id', 'field', 'requester_id', 'status', 'message', 'created_at', 'updated_at'
+    ];
 }
