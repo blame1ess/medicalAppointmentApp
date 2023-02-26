@@ -28,12 +28,6 @@
                 </header>
             @endif
 
-            <div id="message">
-                @include('flash_message')
-
-                @yield('content')
-            </div>
-
             <!-- Page Content -->
             <main>
                 {{ $slot }}
@@ -41,4 +35,14 @@
         </div>
     @stack('scripts-bottom')
     </body>
+
+    <script>
+
+        window.onload=function (){
+            document.querySelector('.close-btn').addEventListener('click', function () {
+                document.querySelector('.flash-message').style.display = "none"
+            })
+        }
+    </script>
+
 </html>

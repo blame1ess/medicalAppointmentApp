@@ -16,14 +16,21 @@ class ManageRequestsController extends Controller
 
         $validation = $request->validate([
             'field' => 'string|required',
-            'message' => 'string'
         ]);
+
+        if($request->message) {
+            $message = $request->message;
+        } else {
+            $message = 'empty';
+        }
 
         Field_request::query()->create([
             'field' => $request->field,
             'requester_id' => auth()->user()->id,
-            'message' => $request->message,
+            'message' => $message,
         ]);
+
+
 
         return back()->with('success', 'Request created successfully!');
     }

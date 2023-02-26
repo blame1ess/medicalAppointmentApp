@@ -35,6 +35,10 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h2 class="text-lg mb-4">You can ask administration of web-site to add new fields:</h2>
 
+                    <div class="mb-5">
+                        @include('flash_message')
+                    </div>
+
                     <form action="{{ route('manage_requests.field_request') }}" method="post">
                         @csrf
                         @method('put')
@@ -42,13 +46,14 @@
                         <div class="mb-4">
                             <label class="mr-24">Field Name:</label>
                             <input type="text" name="field" style="border-radius: 10px; min-width: 300px" placeholder="Write in lower case letters">
-                        </div>
-
-                        @error('field')
-                            <div>
+                            @error('field')
+                            <div class="text-red-700">
                                 <span>{{ $message }}</span>
                             </div>
-                        @enderror
+                            @enderror
+                        </div>
+
+
 
                         <div class="mb-4">
                             <label class="mr-9">Additional Message:</label>
@@ -62,4 +67,7 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>
+
+

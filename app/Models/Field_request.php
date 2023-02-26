@@ -9,6 +9,8 @@ class Field_request extends Model
 {
     use HasFactory;
 
+    protected $table = 'field_request';
+
     protected $fillable = [
         'id', 'field', 'requester_id', 'status', 'message', 'created_at', 'updated_at'
     ];
