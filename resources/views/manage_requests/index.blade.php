@@ -5,6 +5,10 @@
         </h2>
     </x-slot>
 
+    <div class="mb-5">
+        @include('flash_message')
+    </div>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -35,10 +39,6 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h2 class="text-lg mb-4">You can ask administration of web-site to add new fields:</h2>
 
-                    <div class="mb-5">
-                        @include('flash_message')
-                    </div>
-
                     <form action="{{ route('manage_requests.field_request') }}" method="post">
                         @csrf
                         @method('put')
@@ -59,6 +59,38 @@
                             <label class="mr-9">Additional Message:</label>
                             <input type="text" name="message" style="border-radius: 10px; min-width: 300px" placeholder="Any additional info (not required)">
                             <button type="submit" class="bg-blue-600 text-white py-1 px-5 rounded-xl ml-5 hover:bg-red-700">SEND</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-12" style="margin-top: -5%">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h2 class="text-lg mb-4">Or you can make custom requests in form of message:</h2>
+
+                    <form action="{{ route('manage_requests.custom_request') }}" method="post">
+                        @csrf
+                        @method('put')
+
+                        <div class="mb-4 flex">
+                            <label class="mr-24">Request Description:</label>
+                            <textarea type="text" name="request_content" style="border-radius: 10px; min-width: 400px; min-height: 150px" placeholder="Provide detailed description of your request"></textarea>
+
+                            @error('field')
+                                <div class="text-red-700">
+                                    <span>{{ $message }}</span>
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-4 flex justify-end" style="width: 50%">
+                            <button type="submit" class="bg-blue-600 text-white py-1 px-5 rounded-xl ml-5 hover:bg-red-700 mt-2">SEND</button>
                         </div>
 
                     </form>

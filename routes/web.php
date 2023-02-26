@@ -61,6 +61,7 @@ Route::prefix('doctor')->middleware('auth', 'verified', 'doctor')->group( functi
 
     Route::get('manage_requests', [\App\Http\Controllers\Doctor\ManageRequestsController::class, 'index'])->name('doctor.manage_requests');
     Route::put('manage_requests/field_request', [\App\Http\Controllers\Doctor\ManageRequestsController::class, 'create_field_request'])->name('manage_requests.field_request');
+    Route::put('manange_requests/custom_request', [\App\Http\Controllers\Doctor\ManageRequestsController::class, 'create_custom_request'])->name('manage_requests.custom_request');
 });
 
 

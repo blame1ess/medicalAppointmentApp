@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Doctor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Field_request;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 class ManageRequestsController extends Controller
@@ -32,6 +33,23 @@ class ManageRequestsController extends Controller
 
 
 
-        return back()->with('success', 'Request created successfully!');
+        return back()->with('success', 'Field request has been created.');
     }
+
+    public function create_custom_request(Request $request) {
+
+        $validation = $request->validate([
+            'request_content' => 'required|string'
+        ]);
+
+        Message::query()->create([
+            'user_id' => auth()->user()->id,
+            'content' => $request->request_content,
+        ]);
+
+        return back()->with('success', 'Your request has been created.');
+
+    }
+
+
 }
